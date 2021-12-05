@@ -17,4 +17,12 @@ contract SuperMarioWorld is ERC721 {
         require(_owners[tokenId] != address(0), "Token ID does not exist!");
         return _tokenURIs[tokenId];
     }
+
+    function mint(string memory _tokenURI) public {
+        tokenCount += 1;
+        _balances[msg.sender] += 1;
+        _owners[tokenCount] = msg.sender;
+        _tokenURIs[tokenCount] = _tokenURI;
+        emit Transfer(address(0), msg.sender, tokenCount);
+    }
 }
