@@ -73,4 +73,8 @@ contract ERC721 {
     function _checkOnERC721Received() private pure returns(bool) {
         return true;
     }
+
+    function supportsInterface(bytes4 interfaceId) public pure virtual returns(bool) {
+        return interfaceId == 0x80ac58cd;
+    }
 }
