@@ -25,4 +25,8 @@ contract SuperMarioWorld is ERC721 {
         _tokenURIs[tokenCount] = _tokenURI;
         emit Transfer(address(0), msg.sender, tokenCount);
     }
+
+    function supportsInterface(bytes4 interfaceId) public pure override returns(bool) {
+        return interfaceId == 0x80ac58cd || interfaceId == 0x5b5e139f;
+    }
 }
