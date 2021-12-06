@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/mirkopezo/nft-erc721-from-scratch/issues"
   },
-  "homepage": "https://github.com/mirkopezo/nft-erc721-from-scratch#readme"
+  "homepage": "https://github.com/mirkopezo/nft-erc721-from-scratch#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
 }
