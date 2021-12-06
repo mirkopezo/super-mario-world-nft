@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mirkopezo/nft-erc721-from-scratch#readme",
   "dependencies": {
+    "@openzeppelin/contracts": "^4.4.0",
     "dotenv": "^10.0.0"
   },
   "devDependencies": {
