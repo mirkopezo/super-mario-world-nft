@@ -1,15 +1,11 @@
-# Basic Sample Hardhat Project
+# Super Mario World NFT collections
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+SuperMarioWorld - Mario 
+(https://testnets.opensea.io/assets/mumbai/0x5631a48e8713e26f227cf3c1465e91732883e134/1)
+SuperMarioWorldOZ - Luigi
+(https://testnets.opensea.io/assets/mumbai/0xdb9dce40f32caf28c8685bbce9211131bc4d5b48/1)
 
-Try running some of the following tasks:
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+Mario is deployed from SuperMarioWorld contract, and Luigi is deployed from SuperMarioWorldOZ contract.
+
+
