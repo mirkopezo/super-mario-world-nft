@@ -1,6 +1,12 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.2;
 
+import "./Address.sol";
+import "./IERC721TokenReceiver.sol";
+
 contract ERC721 {
+    using Address for address;
+
     event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
     event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);
     event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId);
@@ -63,15 +69,30 @@ contract ERC721 {
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public {
         transferFrom(from, to, tokenId);
-        require(_checkOnERC721Received(), "Receiver not implemented!");
+        require(_checkOnERC721Received(from, to, tokenId, _data), "Receiver not implemented!");
     }
 
     function safeTransferFrom(address from, address to, uint256 tokenId) public {
         safeTransferFrom(from, to, tokenId, "");
     }
 
-    function _checkOnERC721Received() private pure returns(bool) {
-        return true;
+    function _checkOnERC721Received(
+        address from,
+        address to,
+        uint tokenId,
+        bytes memory _data
+    ) private returns(bool) {
+        if(to.isContract()) {
+            return
+                IERC721TokenReceiver(to).onERC721Received(
+                    msg.sender,
+                    from,
+                    tokenId,
+                    _data
+                ) == IERC721TokenReceiver.onERC721Received.selector;
+        } else {
+            return true;
+        }
     }
 
     function supportsInterface(bytes4 interfaceId) public pure virtual returns(bool) {
