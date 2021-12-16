@@ -98,6 +98,8 @@ contract ERC721 is IERC721, IERC165 {
     }
 
     function supportsInterface(bytes4 interfaceId) public pure virtual override returns(bool) {
-        return interfaceId == 0x80ac58cd;
+        return 
+            interfaceId == type(IERC721).interfaceId ||
+            interfaceId == type(IERC165).interfaceId;
     }
 }
