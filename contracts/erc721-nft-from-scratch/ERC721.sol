@@ -4,8 +4,9 @@ pragma solidity ^0.8.2;
 import "./Address.sol";
 import "./IERC721TokenReceiver.sol";
 import "./IERC721.sol";
+import "./IERC165.sol";
 
-contract ERC721 is IERC721 {
+contract ERC721 is IERC721, IERC165 {
     using Address for address;
 
     event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
@@ -96,7 +97,7 @@ contract ERC721 is IERC721 {
         }
     }
 
-    function supportsInterface(bytes4 interfaceId) public pure virtual returns(bool) {
+    function supportsInterface(bytes4 interfaceId) public pure virtual override returns(bool) {
         return interfaceId == 0x80ac58cd;
     }
 }
