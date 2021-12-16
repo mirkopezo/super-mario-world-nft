@@ -5,8 +5,8 @@ import "./ERC721.sol";
 import "./IERC721Metadata.sol";
 
 contract SuperMarioWorld is ERC721, IERC721Metadata {
-    string public name;
-    string public symbol;
+    string public override name;
+    string public override symbol;
     uint256 public tokenCount;
     mapping(uint256 => string) private _tokenURIs;
 
@@ -15,7 +15,7 @@ contract SuperMarioWorld is ERC721, IERC721Metadata {
         symbol = _symbol;
     }
 
-    function tokenURI(uint256 tokenId) public view returns(string memory) {
+    function tokenURI(uint256 tokenId) public view override returns(string memory) {
         require(_owners[tokenId] != address(0), "Token ID does not exist!");
         return _tokenURIs[tokenId];
     }
