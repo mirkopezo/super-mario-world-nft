@@ -3,8 +3,9 @@ pragma solidity ^0.8.2;
 
 import "./Address.sol";
 import "./IERC721TokenReceiver.sol";
+import "./IERC721.sol";
 
-contract ERC721 {
+contract ERC721 is IERC721 {
     using Address for address;
 
     event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
@@ -16,39 +17,39 @@ contract ERC721 {
     mapping(address => mapping(address => bool)) private _operatorApprovals;
     mapping(uint256 => address) private _tokenApprovals;
 
-    function balanceOf(address owner) public view returns(uint256) {
+    function balanceOf(address owner) public view override returns(uint256) {
         require(owner != address(0), "Address of owner cannot be zero!");
         return _balances[owner];
     }
 
-    function ownerOf(uint256 tokenId) public view returns(address) {
+    function ownerOf(uint256 tokenId) public view override returns(address) {
         address owner = _owners[tokenId];
         require(owner != address(0), "Token ID does not exist!");
         return owner;
     }
 
-    function setApprovalForAll(address operator, bool approved) public {
+    function setApprovalForAll(address operator, bool approved) public override {
         _operatorApprovals[msg.sender][operator] = approved;
         emit ApprovalForAll(msg.sender, operator, approved); 
     }
 
-    function isApprovedForAll(address owner, address operator) public view returns(bool) {
+    function isApprovedForAll(address owner, address operator) public view override returns(bool) {
         return _operatorApprovals[owner][operator];
     }
 
-    function approve(address to, uint256 tokenId) public {
+    function approve(address to, uint256 tokenId) public override {
         address owner = ownerOf(tokenId);
         require(msg.sender == owner || isApprovedForAll(owner, msg.sender), "You are not owner or approved operator!");
         _tokenApprovals[tokenId] = to;
         emit Approval(owner, to, tokenId);
     }
 
-    function getApproved(uint256 tokenId) public view returns(address) {
+    function getApproved(uint256 tokenId) public view override returns(address) {
         require(_owners[tokenId] != address(0), "Token ID does not exist!");
         return _tokenApprovals[tokenId];
     }
 
-    function transferFrom(address from, address to, uint256 tokenId) public {
+    function transferFrom(address from, address to, uint256 tokenId) public override {
         address owner = ownerOf(tokenId);
         address approved = getApproved(tokenId);
         require(
@@ -67,12 +68,12 @@ contract ERC721 {
         emit Transfer(from, to, tokenId);
     }
 
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public {
+    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public override {
         transferFrom(from, to, tokenId);
         require(_checkOnERC721Received(from, to, tokenId, _data), "Receiver not implemented!");
     }
 
-    function safeTransferFrom(address from, address to, uint256 tokenId) public {
+    function safeTransferFrom(address from, address to, uint256 tokenId) public override {
         safeTransferFrom(from, to, tokenId, "");
     }
 
