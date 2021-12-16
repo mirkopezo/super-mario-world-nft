@@ -6,7 +6,7 @@ import "./IERC721TokenReceiver.sol";
 import "./IERC721.sol";
 import "./IERC165.sol";
 
-contract ERC721 is IERC721, IERC165 {
+contract ERC721 is IERC721 {
     using Address for address;
 
     event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
