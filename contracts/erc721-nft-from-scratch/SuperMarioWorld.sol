@@ -2,8 +2,9 @@
 pragma solidity ^0.8.2;
 
 import "./ERC721.sol";
+import "./IERC721Metadata.sol";
 
-contract SuperMarioWorld is ERC721 {
+contract SuperMarioWorld is ERC721, IERC721Metadata {
     string public name;
     string public symbol;
     uint256 public tokenCount;
@@ -28,6 +29,9 @@ contract SuperMarioWorld is ERC721 {
     }
 
     function supportsInterface(bytes4 interfaceId) public pure override returns(bool) {
-        return interfaceId == 0x80ac58cd || interfaceId == 0x5b5e139f;
+        return 
+            interfaceId == type(IERC721).interfaceId ||
+            interfaceId == type(IERC165).interfaceId || 
+            interfaceId == type(IERC721Metadata).interfaceId;
     }
 }

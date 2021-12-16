@@ -4,7 +4,6 @@ pragma solidity ^0.8.2;
 import "./Address.sol";
 import "./IERC721TokenReceiver.sol";
 import "./IERC721.sol";
-import "./IERC165.sol";
 
 contract ERC721 is IERC721 {
     using Address for address;
