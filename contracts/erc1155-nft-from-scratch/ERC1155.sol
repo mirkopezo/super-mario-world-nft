@@ -2,7 +2,14 @@
 pragma solidity ^0.8.2;
 
 contract ERC1155 {
+    event ApprovalForAll(
+        address indexed _owner,
+        address indexed _operator,
+        bool _approved
+    );
+
     mapping(uint256 => mapping(address => uint256)) internal _balances;
+    mapping(address => mapping(address => bool)) private _operatorApprovals;
 
     function balanceOf(address account, uint256 id)
         public
@@ -27,5 +34,18 @@ contract ERC1155 {
             batchBalances[iter] = balanceOf(accounts[iter], ids[iter]);
         }
         return batchBalances;
+    }
+
+    function isApprovedForAll(address owner, address operator)
+        public
+        view
+        returns (bool)
+    {
+        return _operatorApprovals[owner][operator];
+    }
+
+    function setApprovedForAll(address operator, bool approved) public {
+        _operatorApprovals[msg.sender][operator] = approved;
+        emit ApprovalForAll(msg.sender, operator, approved);
     }
 }
