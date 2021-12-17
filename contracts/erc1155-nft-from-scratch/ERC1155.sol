@@ -7,6 +7,13 @@ contract ERC1155 {
         address indexed _operator,
         bool _approved
     );
+    event TransferSingle(
+        address indexed _operator,
+        address indexed _from,
+        address indexed _to,
+        uint256 _id,
+        uint256 _amount
+    );
 
     mapping(uint256 => mapping(address => uint256)) internal _balances;
     mapping(address => mapping(address => bool)) private _operatorApprovals;
@@ -47,5 +54,38 @@ contract ERC1155 {
     function setApprovedForAll(address operator, bool approved) public {
         _operatorApprovals[msg.sender][operator] = approved;
         emit ApprovalForAll(msg.sender, operator, approved);
+    }
+
+    function _transfer(
+        address from,
+        address to,
+        uint256 id,
+        uint256 amount
+    ) private {
+        uint256 fromBalance = balanceOf(from, id);
+        require(fromBalance >= amount, "You dont have enough tokens!");
+        _balances[id][from] = fromBalance - amount;
+        _balances[id][to] += amount;
+    }
+
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 id,
+        uint256 amount,
+        bytes memory data
+    ) public virtual {
+        require(
+            msg.sender == from || isApprovedForAll(from, msg.sender),
+            "You are not the owner or approved for transfer!"
+        );
+        require(to != address(0), "Recipient address cannot be zero!");
+        _transfer(from, to, id, amount);
+        emit TransferSingle(msg.sender, from, to, id, amount);
+        require(_checkOnERC1155Received(), "Receiver is not implemented!");
+    }
+
+    function _checkOnERC1155Received() private pure returns (bool) {
+        return true;
     }
 }
