@@ -3,7 +3,7 @@ pragma solidity ^0.8.2;
 
 library Address {
     function isContract(address account) internal view returns (bool) {
-        uint size;
+        uint256 size;
         assembly {
             size := extcodesize(account)
         }

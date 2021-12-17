@@ -15,7 +15,12 @@ contract SuperMarioWorld is ERC721, IERC721Metadata {
         symbol = _symbol;
     }
 
-    function tokenURI(uint256 tokenId) public view override returns(string memory) {
+    function tokenURI(uint256 tokenId)
+        public
+        view
+        override
+        returns (string memory)
+    {
         require(_owners[tokenId] != address(0), "Token ID does not exist!");
         return _tokenURIs[tokenId];
     }
@@ -28,10 +33,15 @@ contract SuperMarioWorld is ERC721, IERC721Metadata {
         emit Transfer(address(0), msg.sender, tokenCount);
     }
 
-    function supportsInterface(bytes4 interfaceId) public pure override returns(bool) {
-        return 
+    function supportsInterface(bytes4 interfaceId)
+        public
+        pure
+        override
+        returns (bool)
+    {
+        return
             interfaceId == type(IERC721).interfaceId ||
-            interfaceId == type(IERC165).interfaceId || 
+            interfaceId == type(IERC165).interfaceId ||
             interfaceId == type(IERC721Metadata).interfaceId;
     }
 }

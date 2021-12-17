@@ -3,9 +3,9 @@ pragma solidity ^0.8.2;
 
 interface IERC721TokenReceiver {
     function onERC721Received(
-        address _operator, 
-        address _from, 
-        uint256 _tokenId, 
+        address _operator,
+        address _from,
+        uint256 _tokenId,
         bytes memory _data
-    ) external returns(bytes4);
+    ) external returns (bytes4);
 }
