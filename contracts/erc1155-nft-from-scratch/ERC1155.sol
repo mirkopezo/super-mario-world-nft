@@ -12,4 +12,20 @@ contract ERC1155 {
         require(account != address(0), "Address cannot be zero!");
         return _balances[id][account];
     }
+
+    function balanceOfBatch(address[] memory accounts, uint256[] memory ids)
+        public
+        view
+        returns (uint256[] memory)
+    {
+        require(
+            accounts.length == ids.length,
+            "Accounts and ids array must be same length!"
+        );
+        uint256[] memory batchBalances = new uint256[](accounts.length);
+        for (uint256 iter = 0; iter < accounts.length; iter++) {
+            batchBalances[iter] = balanceOf(accounts[iter], ids[iter]);
+        }
+        return batchBalances;
+    }
 }
