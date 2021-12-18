@@ -15,9 +15,9 @@ contract ERC1155 {
         uint256 _amount
     );
     event TransferBatch(
-        address _operator,
-        address _from,
-        address _to,
+        address indexed _operator,
+        address indexed _from,
+        address indexed _to,
         uint256[] _ids,
         uint256[] _amounts
     );
