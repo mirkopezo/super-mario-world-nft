@@ -119,4 +119,13 @@ contract ERC1155 {
         emit TransferBatch(msg.sender, from, to, ids, amounts);
         require(_checkOnBatchERC1155Received(), "Receiver is not implemented!");
     }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        pure
+        virtual
+        returns (bool)
+    {
+        return interfaceId == 0xd9b67a26;
+    }
 }
