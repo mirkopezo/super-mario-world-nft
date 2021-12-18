@@ -14,6 +14,13 @@ contract ERC1155 {
         uint256 _id,
         uint256 _amount
     );
+    event TransferBatch(
+        address _operator,
+        address _from,
+        address _to,
+        uint256[] _ids,
+        uint256[] _amounts
+    );
 
     mapping(uint256 => mapping(address => uint256)) internal _balances;
     mapping(address => mapping(address => bool)) private _operatorApprovals;
@@ -87,5 +94,29 @@ contract ERC1155 {
 
     function _checkOnERC1155Received() private pure returns (bool) {
         return true;
+    }
+
+    function _checkOnBatchERC1155Received() private pure returns (bool) {
+        return true;
+    }
+
+    function safeBatchTransferFrom(
+        address from,
+        address to,
+        uint256[] memory ids,
+        uint256[] memory amounts,
+        bytes memory data
+    ) public {
+        require(
+            msg.sender == from || isApprovedForAll(from, msg.sender),
+            "You are not the owner or approved for transfers!"
+        );
+        require(to != address(0), "Recipient address cannot be zero!");
+        require(ids.length == amounts.length, "Arrays must be same length!");
+        for (uint256 iter = 0; iter < ids.length; iter++) {
+            _transfer(from, to, ids[iter], amounts[iter]);
+        }
+        emit TransferBatch(msg.sender, from, to, ids, amounts);
+        require(_checkOnBatchERC1155Received(), "Receiver is not implemented!");
     }
 }
