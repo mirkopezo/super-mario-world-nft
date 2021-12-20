@@ -9,7 +9,7 @@ SuperMarioWorld - Mario
 SuperMarioWorldOZ - Luigi
 (https://testnets.opensea.io/assets/mumbai/0xdb9dce40f32caf28c8685bbce9211131bc4d5b48/1)
 SuperMarioWorldERC1155 - Yoshi
-(https://testnets.opensea.io/assets/0xe1c6bf44a85af45d4581c0d3ad2f9b021baa98f6/1)
+(https://testnets.opensea.io/assets/0xe1c6bf44a85af45d4581c0d3ad2f9b021baa98f6/1)  
 SuperMarioWorldERC1155OZ - Donkey Kong
 (https://testnets.opensea.io/assets/0x8afae1435061084d38b491a6676f8f9af9cec9b6/1)
 
