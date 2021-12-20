@@ -15,6 +15,7 @@ contract SuperMarioWorldOZ is ERC721URIStorage, AccessControl {
         ERC721(_name, _symbol)
     {
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _setupRole(MINTER_ROLE, msg.sender);
     }
 
     function mint(string memory tokenURI)
