@@ -1,7 +1,7 @@
 # Super Mario World NFT collections
 
 <p align="center">
-  <img src="https://i.ibb.co/GVYg62y/supermarioworld.png" />
+  <img src="https://i.ibb.co/rcYV5KL/supermarioworld.png" />
 </p>
 
 SuperMarioWorld - Mario 
@@ -10,8 +10,10 @@ SuperMarioWorldOZ - Luigi
 (https://testnets.opensea.io/assets/mumbai/0xdb9dce40f32caf28c8685bbce9211131bc4d5b48/1)
 SuperMarioWorldERC1155 - Yoshi
 (https://testnets.opensea.io/assets/0xe1c6bf44a85af45d4581c0d3ad2f9b021baa98f6/1)
+SuperMarioWorldERC1155OZ - Donkey Kong
+(https://testnets.opensea.io/assets/0x8afae1435061084d38b491a6676f8f9af9cec9b6/1)
 
 
-Mario was minted from SuperMarioWorld contract, Luigi was minted from SuperMarioWorldOZ contract and Yoshi was minted from SuperMarioWorldERC1155 contract.
+Mario was minted from SuperMarioWorld contract, Luigi was minted from SuperMarioWorldOZ contract, Yoshi was minted from SuperMarioWorldERC1155 contract and Donkey Kong was minted from SuperMarioWorldERC1155OZ contract.
 
 
