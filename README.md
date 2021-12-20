@@ -1,5 +1,13 @@
-# Super Mario World NFT collections
+# Super Mario World Collection
+Super Mario World Collection (https://testnets.opensea.io/collection/supermarioworldcollection-xnmg3q79hc)  
+This collection was minted from [SuperMarioWorldCollection ](https://github.com/mirkopezo/super-mario-world-nft/blob/main/contracts/erc1155-final-collection/SuperMarioWorldCollection.sol) contract using [this](https://github.com/mirkopezo/super-mario-world-nft/tree/main/metadata/final-collection) metadata.
+<p align="center">
+  <img src="https://i.ibb.co/mSCwt2X/supermarioworldcollection.png" />
+</p>
 
+<br/>
+
+# Super Mario World testing collections
 <p align="center">
   <img src="https://i.ibb.co/rcYV5KL/supermarioworld.png" />
 </p>
