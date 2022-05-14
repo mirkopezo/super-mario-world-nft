@@ -1,4 +1,7 @@
+ [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://gitHub.com/mirkopezo/)
+
 # Super Mario World Collection
+ 
 Super Mario World Collection (https://testnets.opensea.io/collection/supermarioworldcollection-xnmg3q79hc)  
 This collection was minted from [SuperMarioWorldCollection ](https://github.com/mirkopezo/super-mario-world-nft/blob/main/contracts/erc1155-final-collection/SuperMarioWorldCollection.sol) contract using [this](https://github.com/mirkopezo/super-mario-world-nft/tree/main/metadata/final-collection) metadata.
 <p align="center">
